@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router,Route } from 'react-router-dom';
+import Products from './components/Products';
+import Orders from './components/Orders';
+import Today from './components/Today';
+import Production from './components/Production';
+import AddProduct from './components/AddProduct';
+import Navbar from './components/Navbar';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+    render(){
+        return(
+            <div className="App">
+            <Router>
+            <div className="row" id="appHeader">
+                <div className="col-auto py-3 px-3">
+                    <Navbar />
+                </div>
+                <div className="col px-5 py-3" id="displaySide">
+                <Route path="/products" exact component = {Products}></Route>
+                <Route path="/orders" exact component = {Orders}></Route>
+                <Route path="/today" exact component = {Today}></Route>
+                <Route path="/production" exact component = {Production}></Route>
+                <Route path="/product/new" exact component= {AddProduct}></Route>
+                </div>
+            </div>
+            </Router>
+            </div>
+        )
+    }
 }
 
 export default App;
